@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Group</title>
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            width: 120px; /* Adjust width as needed */
+        }
+        .input-field {
+            flex: 1; /* Allow remaining space for the input field */
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .members-list {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            height: 150px; /* Adjust height as needed */
+            overflow-y: scroll; /* Enable scrolling for long lists */
+        }
+        .members-list li {
+            margin-bottom: 5px;
+        }
+        .contact-list {
+            display: none; /* Initially hidden */
+            position: absolute; /* Positioned absolutely below the member input */
+            top: calc(100% + 5px);
+            left: 0;
+            width: 100%; /* Match the width of the member input */
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            max-height: 200px; /* Limit maximum height for overflow */
+            overflow-y: scroll; /* Enable scrolling for long lists */
+            padding: 5px;
+        }
+        .contact-list li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+        .save-button,
+        .back-button,
+        .cancel-button {
+            margin-left: 10px; /* Add space between buttons */
+        }
+        .save-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            cursor: pointer;
+        }
+        .add-button {
+            margin-left: 10px; /* Spacing between input and button */
+            padding: 5px 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: #ddd; /* Adjust color */
+            color: black;
+            cursor: pointer;
+        }/* Your existing CSS styles */
+    </style>
+</head>
+<body>
+    <h1>Create New Group</h1>
+    <div class="form-container">
+        <form id="group-form">
+            <div class="form-group">
+                <label for="group-name" class="form-label">Group Name:</label>
+                <input type="text" id="group-name" name="group-name" class="input-field" placeholder="Enter Group Name">
+            </div>
+            <div class="form-group">
+                <label for="member-name" class="form-label">Member Name:</label>
+                <input type="text" id="member-name" name="member-name" class="input-field" placeholder="Enter Contact Name">
+                <button type="button" class="add-button">Add</button>
+            </div>
+            <div class="form-group">
+                <label for="members" class="form-label">Members:</label>
+                <ul id="members-list" class="members-list"></ul>
+            </div>
+            <div class="contact-list" id="contact-list">
+                <!-- Contact list items will be dynamically added here -->
+            </div>
+            <div class="button-container">
+                <button type="button" class="back-button" onclick="window.location.href='contacts.html'">Back</button>
+                <button type="button" class="cancel-button">Cancel</button>
+                <button type="submit" class="save-button">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addButton = document.querySelector('.add-button');
+            const membersList = document.querySelector('#members-list');
+            const groupForm = document.querySelector('#group-form');
+
+            addButton.addEventListener('click', function() {
+                const memberNameInput = document.createElement('input');
+                memberNameInput.type = 'text';
+                memberNameInput.classList.add('input-field');
+                memberNameInput.placeholder = 'Enter Contact Name';
+
+                // Only append the last entered name
+                const lastEnteredName = document.querySelector('#member-name').value;
+                memberNameInput.value = lastEnteredName;
+
+                membersList.appendChild(memberNameInput);
+            });
+
+            groupForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const groupName = document.querySelector('#group-name').value;
+                const members = document.querySelectorAll('#members-list .input-field');
+                if (groupName.trim() === '') {
+                    alert('Please enter a group name.');
+                    return;
+                }
+                if (members.length === 0) {
+                    alert('Please add at least one member.');
+                    return;
+                }
+                const memberNames = Array.from(members).map(input => input.value.trim()).join(', ');
+                const confirmation = confirm(`Save the following details?\nGroup Name: ${groupName}\nMembers: ${memberNames}`);
+                if (confirmation) {
+                    // Here you can perform further actions like saving the group data to a database
+                    alert('Group details saved successfully.');
+                } else {
+                    alert('Group creation cancelled.');
+                }
+            });
+
+            const cancelButton = document.querySelector('.cancel-button');
+            cancelButton.addEventListener('click', function() {
+                location.reload(); // Refresh the page
+            });
+        });
+    </script>
+</body>
+</html>

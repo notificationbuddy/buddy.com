@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification Buddy</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f2f2; /* Black background color */
+    color: #fff; /* Text color */
+  }
+
+
+  #header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #header h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+  #desktop-icons {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+  }
+
+  .desktop-icon {
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .desktop-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #add-icon {
+    position: fixed;
+    bottom: 30px;
+    left: calc(50% - 20px);
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  #popup {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+  }
+
+  #popup a {
+    display: block;
+    padding: 5px 0;
+    color: #333;
+    text-decoration: none;
+  }
+   /* Additional styles for the setting icon */
+   .setting-icon {
+    color: #032c43; /* Visible color for the setting icon */
+  }
+
+  /* Media query for smaller screens (phones) */
+  @media screen and (max-width: 600px) {
+    .desktop-icon img {
+      width: 40px; /* Set smaller icon size for phones */
+      height: 40px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>NOTIFICATION BUDDY</h1>
+
+</div>
+
+<div id="desktop-icons">
+  <div class="desktop-icon">
+    &#x23F0; <!-- Alarm Symbol -->
+    <br>
+    <a href ="Alarm.html">Alarm</a>
+  </div>
+  <div class="desktop-icon">
+    &#x1F4C2; <!-- Persistent Symbol -->
+    <br>
+    <a href ="Persistent.html">Persistent</a>
+
+  </div>
+  <div class="desktop-icon">
+    &#x1F464; <!-- Contacts Symbol -->
+    <br>
+    <a href ="Contacts.html">Contacts</a>
+   
+  </div>
+  <div class="desktop-icon">
+    &#x1F489; <!-- Mensuration Symbol -->
+
+    <br>
+    <a href ="Mensuration.html">Mensuration</a>
+    
+  </div>
+  <div class="desktop-icon">
+   
+    <br>
+    <a href ="Settings.html">Settings</a>
+    
+  </div>
+</div>
+
+<div id="add-icon" onclick="togglePopup()">&#x2B;</div>
+
+<div id="popup">
+   <a href="myself2.html">New Alarm</a>
+  <a href="reminder.html">Reminder</a>
+</div>
+
+<script>
+  function togglePopup() {
+    var popup = document.getElementById('popup');
+    if (popup.style.display === 'block') {
+      popup.style.display = 'none';
+    } else {
+      popup.style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html> 

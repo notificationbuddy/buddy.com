@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Contact</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .title,
+    .save {
+      font-size: 20px;
+      padding: 5px 5px;
+    }
+
+    .title {
+      color: #333;
+    }
+
+    .save {
+      background-color: #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .content {
+      width: 80%;
+      text-align: center;
+    }
+
+    .content p {
+      margin-bottom: 10px;
+    }
+
+    .contact-info {
+      margin-bottom: 20px;
+    }
+
+    .contact-info label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    /* Added styles for the back and cancel buttons */
+    .back, .cancel {
+      text-decoration: none; /* Remove underline from anchor tag */
+      color: #333; /* Set text color */
+      padding: 5px 10px; /* Add padding for better spacing */
+      border: 1px solid #131111; /* Add a border */
+      border-radius: 5px; /* Add rounded corners */
+      cursor: pointer; /* Set cursor to pointer on hover */
+    }
+
+    .back:hover, .cancel:hover { /* Style on hover */
+      background-color: #f0eeee; /* Add a light background on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <!-- Add the cancel button here -->
+      <a href="contacts.html" class="back">Back</a>
+      <h3><div class="title">New Contact</div></h3>
+      <button class="save">Save</button>
+      <!-- Cancel button -->
+      <a href="javascript:location.reload()" class="cancel">Cancel</a>
+    </div>
+    <div class="content">
+      <p>Please provide name and phone number of the contact.</p>
+      <p>Only registered users can be added as contacts. If the user is not a registered user, then you can invite them using "Settings > Share This App". You can add them as a contact after they register using their phone number.</p>
+      <div class="contact-info">
+        <label for="contactName">Contact Name</label>
+        <input type="text" id="contactName" name="contactName" placeholder="Enter name of the contact">
+      </div>
+      <div class="contact-info">
+        <label for="contactPhone">Contact Phone Number</label>
+        <input type="tel" id="contactPhone" name="contactPhone" placeholder="+91 Enter phone number of the contact">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
